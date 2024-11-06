@@ -1,4 +1,4 @@
-// INCREMENTING VARIABLES & RANDOM VALUES
+ // INCREMENTING VARIABLES & RANDOM VALUES
 
 // 1. Saving elements as variables cleans up your code.
 var counter = 0;
@@ -11,7 +11,7 @@ var plus1btn = document.getElementById("plus1");
 var plus10btn = document.getElementById("plus10");
 var plus50btn = document.getElementById("plus50");
 var stringInEl = document.getElementById("strIn");
-var storyEl = document.getElementById("str0ut");
+var storyEl = document.getElementById("strOut");
 var roundBtn1 = document.getElementById("rand1");
 var roundBtn2 = document.getElementById("rand2");
 var roundBtn3 = document.getElementById("rand3");
@@ -135,7 +135,8 @@ picBtn.addEventListener("click", addCandy);
 
 function addCandy() {
   // Every click, add another candy to the container
-  picContainer.innerHTML += "<img src='images/starburst candy image.jpg'>";
+  picContainer.innerHTML +=
+    "<img src='images/starburst candy image.jpg' width = 300> ";
 }
 
 // Random # from x to y:
@@ -164,9 +165,23 @@ randomSize.addEventListener("click", randomsize);
 function randomsize() {
   let rand = Math.random() * 75;
   rand = Math.round(rand);
+  let string = rand + "px";
+  document.getElementById("thebody").style.fontSize = string;
 }
 
 // 4. Complete the Random Color button. This should change the html background to a random rgb color.  Hint:  `rgb(34, 245, 128)` is a value rgb color, where the numbers each range from 0 to 255. You will need three random numbers, then you will need to create a string using those numbers.
+var randomColor = document.getElementById("random-rgb");
+randomColor.addEventListener("click", randomcolor);
+function randomcolor() {
+  let r = Math.random() * 255;
+  r = Math.round(r);
+  let g = Math.random() * 255;
+  g = Math.round(g);
+  let b = Math.random() * 255;
+  b = Math.round(b);
+  let rgbString = "rgb" + "(" + r + ", " + g + ", " + b + ")";
+  document.getElementById("HTML").style.background = rgbString;
+}
 
 // i.e.  var rgbString = `rgb(34, 245, 128)`;
 //       document.getElementById('HTML').style.background = rgbString
@@ -175,6 +190,28 @@ function randomsize() {
 
 // 4. Code the reset button. This will reset all variables back to initial values and clear out all input fields and reset span boxes back to dashes. It's like refresing the page without actually refreshing the page.
 // Not allowed to use window.location.reload (which simply refreshes the page)
+var resetPage = document.getElementById("reset");
+resetPage.addEventListener("click", pagereset);
+function pagereset() {
+  document.getElementById("display").innerHTML = 0;
+  storyEl.innerHTML = "Once upon a time,";
+  counter = 0;
+  story = "Once upon a time, ";
+  document.getElementById("rand1-out").innerHTML = "----------";
+  document.getElementById("rand2-out").innerHTML = "----------";
+  document.getElementById("rand3-out").innerHTML = "----------";
+  document.getElementById("rand4-out").innerHTML = "----------";
+  document.getElementById("random-size");
+  document.getElementById("random-rgb");
+}
 
 // 6. Create a button that when pressed, add an image of your favorite toy to the website.
 // Each click adds another toy.
+
+var picbtn = document.getElementById("pic-btn2");
+var piccontainer = document.getElementById("pic-container2");
+picbtn.addEventListener("click", favoritetoy);
+function favoritetoy() {
+  piccontainer.innerHTML +=
+    "<img src = 'images/supra toy car image.jpg' width = 300px>";
+}
